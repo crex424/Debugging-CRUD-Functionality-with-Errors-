@@ -4,7 +4,7 @@
     {
         public static Student Add(Student p, SchoolContext db)
         {
-            //Add student to context
+            //Add student to _context
             db.Students.Add(p);
             return p;
         }
