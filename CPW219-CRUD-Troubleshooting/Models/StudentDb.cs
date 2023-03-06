@@ -26,7 +26,7 @@
 
         public static void Delete(SchoolContext context, Student p)
         {
-            context.Students.Update(p);
+            context.Students.Remove(p);
         }
 
         public static void Update(SchoolContext context, Student p)
