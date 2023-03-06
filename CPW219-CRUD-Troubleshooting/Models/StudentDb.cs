@@ -20,7 +20,7 @@
             Student p2 = context
                             .Students
                             .Where(s => s.StudentId == id)
-                            .Single();
+                            .SingleOrDefault();
             return p2;
         }
 
