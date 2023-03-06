@@ -6,6 +6,7 @@
         {
             //Add student to _context
             db.Students.Add(p);
+            db.SaveChanges();
             return p;
         }
 
