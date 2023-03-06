@@ -6,6 +6,7 @@
         {
             //Add student to _context
             db.Students.Add(p);
+            db.SaveChanges();
             return p;
         }
 
@@ -17,24 +18,28 @@
 
         public static Student GetStudent(SchoolContext context, int id)
         {
-            Student p2 = context
+            Student? p2 = context
                             .Students
                             .Where(s => s.StudentId == id)
-                            .Single();
+                            .SingleOrDefault<Student>();
             return p2;
         }
 
         public static void Delete(SchoolContext context, Student p)
         {
-            context.Students.Update(p);
+            // Mark the object as deleted
+            context.Students.Remove(p);
+
+            // Send Delete query to databse
+            context.SaveChanges();
         }
 
         public static void Update(SchoolContext context, Student p)
         {
-            //Mark the object as deleted
-            context.Students.Remove(p);
+            //Mark the object as Updated
+            context.Students.Update(p);
 
-            //Send delete query to database
+            //Send Update query to database
             context.SaveChanges();
         }
     }
