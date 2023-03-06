@@ -17,10 +17,10 @@
 
         public static Student GetStudent(SchoolContext context, int id)
         {
-            Student p2 = context
+            Student? p2 = context
                             .Students
                             .Where(s => s.StudentId == id)
-                            .SingleOrDefault();
+                            .SingleOrDefault<Student>();
             return p2;
         }
 
@@ -32,7 +32,7 @@
         public static void Update(SchoolContext context, Student p)
         {
             //Mark the object as deleted
-            context.Students.Remove(p);
+            context.Students.Update(p);
 
             //Send delete query to database
             context.SaveChanges();
