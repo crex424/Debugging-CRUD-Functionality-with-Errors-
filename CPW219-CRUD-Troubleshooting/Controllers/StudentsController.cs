@@ -60,7 +60,7 @@ namespace CPW219_CRUD_Troubleshooting.Controllers
                 StudentDb.Update(_context, s);
                 await _context.SaveChangesAsync();
 
-                ViewData["Message"] = $"{s.Name} Has Been Updated!";
+                TempData["Message"] = $"{s.Name} Has Been Updated!";
                 return RedirectToAction("Index");
             }
             //return view with errors
