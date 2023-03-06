@@ -25,12 +25,11 @@ namespace CPW219_CRUD_Troubleshooting.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Student s)
+        public IActionResult Create(Student s)
         {
             if (ModelState.IsValid)
             {
                 StudentDb.Add(s, _context);
-                await _context.SaveChangesAsync();
 
                 ViewData["Message"] = $"{s.Name} was added!";
                 return View();
@@ -58,7 +57,6 @@ namespace CPW219_CRUD_Troubleshooting.Controllers
             if (ModelState.IsValid)
             {
                 StudentDb.Update(_context, s);
-                await _context.SaveChangesAsync();
 
                 TempData["Message"] = $"{s.Name} Has Been Updated!";
                 return RedirectToAction("Index");
